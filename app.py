@@ -1,13 +1,12 @@
 import streamlit as st
 
 st.set_page_config(
-page_title=“Happy Birthday Janjon ❤️”,
-page_icon=“❤️”,
-layout=“centered”
+    page_title="Happy Birthday Janjon ❤️",
+    page_icon="❤️",
+    layout="centered"
 )
 
-st.markdown(”””
-
+st.markdown("""
 <style>
 .main {
     background-color: #f8f1ea;
@@ -22,22 +21,20 @@ h1,h2,h3,p {
     font-size:18px;
 }
 </style>
+""", unsafe_allow_html=True)
 
-“””, unsafe_allow_html=True)
+st.markdown("💌 Happy Birthday Janjon 💌")
 
-st.markdown(”💌 Happy Birthday Janjon 💌”, unsafe_allow_html=True)
+st.markdown("### أدخلي الكلمة السرية ❤️")
 
-st.markdown(”### أدخلي الكلمة السرية ❤️”)
+password = st.text_input("", type="password")
 
-password = st.text_input(””, type=“password”)
+if password == "2972009":
+    st.success("تم فتح الرسالة ❤️")
+    st.balloons()
+    st.image("janjon.jpg", use_container_width=True)
 
-if password == “2972009”:
-
-st.success("تم فتح الرسالة ❤️")
-st.balloons()
-st.image("janjon.jpg", use_container_width=True)
-st.markdown("""
-
+    st.markdown("""
 أهلاً بالكتكوتة اللي كبرت سنة ❤️✨
 
 النهاردة إنتي كبرتي سنة، بس كل سنة بتمر بتزودك جمال في عيني وقرب في قلبي أكتر من اللي قبلها.
@@ -66,8 +63,6 @@ st.markdown("""
 
 عقبال عمر بحاله نعيشه سوا، ونحتفل بيكي دايمًا وإيدي مابتسيبش إيدك ✨
 
-⸻
-
 ❤️ رسالة أخيرة ❤️
 
 وفي الآخر، مهما كتبت كلام، عمره ما هيكفي يوصف قد إيه إنتي غالية عندي وقد إيه وجودك مفرق معايا.
@@ -77,9 +72,9 @@ st.markdown("""
 بحبك ❤️
 
 - زياد
-
-“””)
+""")
 
 else:
-if password:
-st.error(“الكلمة السرية غير صحيحة 😅”)
+    if password:
+        st.error("الكلمة السرية غير صحيحة 😅")
+        
