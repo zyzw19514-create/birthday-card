@@ -34,7 +34,6 @@ password = st.text_input(””, type=“password”)
 if password == “2972009”:
 
 st.success("تم فتح الرسالة ❤️")
-st.image("janjon.jpg", use_container_width=True)
 st.balloons()
 st.image("janjon.jpg", use_container_width=True)
 st.markdown("""
