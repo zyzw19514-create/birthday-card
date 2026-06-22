@@ -25,16 +25,25 @@ body {
     100% {transform: translateY(-10vh);}
 }
 
+/* card */
 .card {
     background: white;
     padding: 25px;
     border-radius: 20px;
     box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
     text-align: center;
+    color: #222;
 }
 
-h1 {
-    color: #ff4d88;
+/* مهم جدًا عشان النص يظهر */
+p {
+    color: #222 !important;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+h1, h2, h3 {
+    color: #ff4d88 !important;
 }
 
 button {
