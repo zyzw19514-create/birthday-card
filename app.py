@@ -1,46 +1,85 @@
 import streamlit as st
 
-st.set_page_config(page_title="For Jannah ❤️", layout="centered")
+st.set_page_config(
+page_title=“Happy Birthday Janjon ❤️”,
+page_icon=“❤️”,
+layout=“centered”
+)
 
-PASSWORD = "love"
+st.markdown(”””
 
-if "open" not in st.session_state:
-    st.session_state.open = False
-
-# الخلفية العامة للـ app
-st.markdown("""
 <style>
-    .stApp { background-color: #fcf4f2; }
+.main {
+    background-color: #f8f1ea;
+}
+h1,h2,h3,p {
+    text-align:center;
+}
+.stButton>button {
+    width:100%;
+    border-radius:20px;
+    height:50px;
+    font-size:18px;
+}
 </style>
-""", unsafe_allow_html=True)
 
-if not st.session_state.open:
-    # واجهة الظرف بشكل بسيط ومضمون
-    st.markdown("""
-    <div style="background:white; padding:40px; border-radius:20px; text-align:center; box-shadow:0px 5px 15px rgba(0,0,0,0.1);">
-        <h1 style="color:#ff4d6d;">LOVE</h1>
-        <p>My everything ❤️</p>
-        <div style="font-size:50px;">💌</div>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    password = st.text_input("اكتبي الباسورد:", type="password")
-    if st.button("Unlock 🔓"):
-        if password == PASSWORD:
-            st.session_state.open = True
-            st.rerun()
-        else:
-            st.error("الباسورد غلط!")
+“””, unsafe_allow_html=True)
+
+st.markdown(”💌 Happy Birthday Janjon 💌”, unsafe_allow_html=True)
+
+st.markdown(”### أدخلي الكلمة السرية ❤️”)
+
+password = st.text_input(””, type=“password”)
+
+if password == “2972009”:
+
+st.success("تم فتح الرسالة ❤️")
+st.balloons()
+st.image("janjon.jpg", use_container_width=True)
+st.markdown("""
+
+أهلاً بالكتكوتة اللي كبرت سنة ❤️✨
+
+النهاردة إنتي كبرتي سنة، بس كل سنة بتمر بتزودك جمال في عيني وقرب في قلبي أكتر من اللي قبلها.
+
+كل سنة وإنتي طيبة ❤️
+
+وجودك مش بس حلى أيامي، ده خلاني أعرف يعني إيه أحب بجد وأحس إن قلبي مبسوط ومكتفي بيكي، وإن يومي بيكمل بيكي.
+
+معاكي ببقى على طبيعتي من غير أي حسابات، وبفك من أي ضغط لمجرد إني بكلمك أو أسمع صوتك.
+
+فيكي تفاصيل بتخطف القلب.. ضحكتك، طريقتك في الكلام، وبساطتك اللي بتخلي أي حاجة حواليكي أهدى وأحلى.
+
+بصة واحدة في عينيكي كفاية تخليني أنسى الدنيا كلها.
+
+وعارفة يا جنجون، أكتر حاجة بحبها فيكي إنك طبيعية جدًا، مفيكيش أي تصنع، وكل حاجة فيكي حقيقية وده اللي مخليكي مميزة بجد في عيني.
+
+ولما بفضل أهزر وأناكف فيكي، فده عشان بحب أشوف رياكشناتك وبحب أطلع الطفلة اللي جواكي.
+
+وعلفكرة إنتي عارفة إن دمي خفيف جدًا، بس كبريائك وغرورك هما اللي مانعينك تعترفي.. بطلي مقاوحة بقى 😂❤️
+
+وجودك في حياتي فرق كبير، مش بس في يومي، ده حسسني إني أخدت نصيبي الحلو من الدنيا فيكي.
+
+بدعي ربنا دايمًا إن السنة الجاية تكون أحلى، وإن قلبك يفضل مبسوط، وضحكتك تفضل منورة وشك، ومفيش حاجة في الدنيا تقدر تعكّر عليكي.
+
+كل سنة وإنتي منورة حياتي، وكل سنة وإنتي القريبة لقلبي ❤️
+
+عقبال عمر بحاله نعيشه سوا، ونحتفل بيكي دايمًا وإيدي مابتسيبش إيدك ✨
+
+⸻
+
+❤️ رسالة أخيرة ❤️
+
+وفي الآخر، مهما كتبت كلام، عمره ما هيكفي يوصف قد إيه إنتي غالية عندي وقد إيه وجودك مفرق معايا.
+
+كل سنة وإنتي أحلى حاجة في حياتي يا جنجون 🎂❤️
+
+بحبك ❤️
+
+- زياد
+
+“””)
 
 else:
-    st.balloons()
-    # الرسالة بخط واضح جداً ومن غير تعقيد
-    st.markdown("""
-    <div style="background:white; padding:40px; border-radius:20px; font-size:20px; line-height:1.6; color:#333;">
-        <h2 style="color:#ff4d6d;">🎉 Happy Birthday!</h2>
-        <p>النهاردة إنتي كبرتي سنة، بس كل سنة بتمر بتزودك جمال في عيني وقرب في قلبي أكتر من اللي قبلها.</p>
-        <p>كل سنة وإنتي طيبة ❤️</p>
-        <p>وجودك مش بس حلى أيامي، ده خلاني أعرف يعني إيه أحب بجد وأحس إن قلبي مبسوط ومكتفي بيكي.</p>
-        <p>معاكي ببقى على طبيعتي من غير أي حسابات.. وعقبال عمر بحاله نعيشه سوا وإيدي في إيدك ✨</p>
-    </div>
-    """, unsafe_allow_html=True)
+if password:
+st.error(“الكلمة السرية غير صحيحة 😅”)
