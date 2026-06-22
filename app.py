@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="Birthday Surprise 🎁", page_icon="🎂", layout="centered")
+st.set_page_config(page_title="Birthday Card 🎁", page_icon="🎂", layout="centered")
 
 PASSWORD = "happybirthday"
 
@@ -13,55 +13,32 @@ body {
     font-family: Arial;
 }
 
-/* envelope */
-.envelope {
-    width: 280px;
-    height: 180px;
-    margin: auto;
-    background: #ff4d88;
-    border-radius: 12px;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    cursor: pointer;
-    animation: pop 1s ease-in-out;
-}
-
-.envelope:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 140px solid transparent;
-    border-right: 140px solid transparent;
-    border-top: 90px solid #ff6fa5;
-}
-
-/* animation */
-@keyframes pop {
-    from {transform: scale(0.7); opacity: 0;}
-    to {transform: scale(1); opacity: 1;}
-}
-
-/* card */
-.card {
+/* card before unlock */
+.locked-card {
     background: white;
-    padding: 35px;
+    padding: 40px;
     border-radius: 20px;
     box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
     text-align: center;
-    animation: fade 1.2s ease-in-out;
+    opacity: 0.7;
+}
+
+/* unlocked card */
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+    text-align: center;
+    animation: fade 1s ease-in-out;
 }
 
 @keyframes fade {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+    from {opacity: 0; transform: scale(0.95);}
+    to {opacity: 1; transform: scale(1);}
 }
 
-h1 {
-    color: #ff4d88;
-}
+h1 { color: #ff4d88; }
 
 p {
     font-size: 18px;
@@ -72,31 +49,31 @@ p {
 </style>
 """, unsafe_allow_html=True)
 
-# ---------- SESSION ----------
-if "open" not in st.session_state:
-    st.session_state.open = False
+# ---------- STATE ----------
+if "unlocked" not in st.session_state:
+    st.session_state.unlocked = False
 
-# ---------- PASSWORD ----------
-if not st.session_state.open:
-    st.title("🔒 Enter Password")
+# ---------- CARD ALWAYS SHOWN ----------
+if not st.session_state.unlocked:
+
+    st.markdown("""
+    <div class="locked-card">
+        <h1>🎁 Birthday Card</h1>
+        <p>🔒 Enter password to open your gift</p>
+    </div>
+    """, unsafe_allow_html=True)
 
     password = st.text_input("Password", type="password")
 
-    if st.button("Open Your Gift 🎁"):
+    if st.button("Open 🎉"):
         if password == PASSWORD:
-            st.session_state.open = True
+            st.session_state.unlocked = True
             st.rerun()
         else:
             st.error("Wrong password 😢")
 
-# ---------- VIEW MODE ----------
+# ---------- UNLOCKED VIEW ----------
 else:
-
-    st.markdown("""
-    <div class="envelope"></div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("## 💌 Opening your gift... 🎁")
     st.balloons()
 
     st.markdown("""
