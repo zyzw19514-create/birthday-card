@@ -1,115 +1,88 @@
 import streamlit as st
 
-st.set_page_config(page_title="Birthday Card 🎁", page_icon="🎂", layout="centered")
+# إعدادات الصفحة
+st.set_page_config(page_title="For Jannah ❤️", page_icon="🐣", layout="centered")
 
-PASSWORD = "happybirthday"
+PASSWORD = "love" # الباسورد
 
-# ---------- CSS ----------
+# ---------- CSS للتصميم ----------
 st.markdown("""
 <style>
+.stApp { background-color: #fcf4f2; }
 
-body {
-    background: linear-gradient(135deg, #fff7d6, #ffe4f0);
-    font-family: Arial;
-}
-
-/* card before unlock */
-.locked-card {
+/* تصميم الظرف */
+.envelope-box {
     background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
+    width: 320px;
+    height: 220px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #f8e1e7;
+}
+.seal {
+    width: 60px;
+    height: 60px;
+    background: #ff4d6d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.text-style {
+    font-size: 22px !important;
+    line-height: 1.8 !important;
+    color: #444;
+    font-family: sans-serif;
     text-align: center;
-    opacity: 0.7;
+    padding: 20px;
 }
-
-/* unlocked card */
-.card {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.15);
-    text-align: center;
-    animation: fade 1s ease-in-out;
-}
-
-@keyframes fade {
-    from {opacity: 0; transform: scale(0.95);}
-    to {opacity: 1; transform: scale(1);}
-}
-
-h1 { color: #ff4d88; }
-
-p {
-    font-size: 18px;
-    line-height: 2;
-    color: #222;
-}
-
 </style>
 """, unsafe_allow_html=True)
 
-# ---------- STATE ----------
-if "unlocked" not in st.session_state:
-    st.session_state.unlocked = False
+# ---------- المنطق ----------
+if "open" not in st.session_state:
+    st.session_state.open = False
 
-# ---------- CARD ALWAYS SHOWN ----------
-if not st.session_state.unlocked:
-
+if not st.session_state.open:
+    # واجهة الظرف
+    st.markdown('<div style="text-align:center"><h1>LOVE</h1><p>my everything ❤️</p></div>', unsafe_allow_html=True)
     st.markdown("""
-    <div class="locked-card">
-        <h1>🎁 Birthday Card</h1>
-        <p>🔒 Enter password to open your gift</p>
+    <div class="envelope-box">
+        <div class="seal">💌</div>
+        <p>ENTER THE SECRET WORD</p>
     </div>
     """, unsafe_allow_html=True)
-
-    password = st.text_input("Password", type="password")
-
-    if st.button("Open 🎉"):
+    
+    password = st.text_input("", type="password")
+    if st.button("Unlock 🔓"):
         if password == PASSWORD:
-            st.session_state.unlocked = True
+            st.session_state.open = True
             st.rerun()
         else:
-            st.error("Wrong password 😢")
+            st.error("Wrong word!")
 
-# ---------- UNLOCKED VIEW ----------
 else:
+    # محتوى الهدية بعد الفتح
     st.balloons()
-
-    st.markdown("""
-    <div class="card">
-
-    <h1>🎉 HAPPY BIRTHDAY 🎉</h1>
-
-    <h3>أهلاً بالكتكوتة اللي كبرت سنة ❤️✨</h3>
-
-    <p>
-
-    أهلاً بالكتكوتة اللي كبرت سنة ❤️✨<br><br>
-
-    النهاردة إنتي كبرتي سنة، بس كل سنة بتمر بتزودك جمال في عيني وقرب في قلبي أكتر من اللي قبلها.<br><br>
-
-    كل سنة وإنتي طيبة ❤️<br><br>
-
-    وجودك مش بس حلى أيامي، ده خلاني أعرف يعني إيه أحب بجد وأحس إن قلبي مبسوط ومكتفي بيكي، وإن يومي بيكمل بيكي.<br><br>
-
-    معاكي ببقى على طبيعتي من غير أي حسابات، وبفك من أي ضغط لمجرد إني بكلمك أو أسمع صوتك.<br><br>
-
-    فيكي تفاصيل بتخطف القلب.. ضحكتك، طريقتك في الكلام، وبساطتك اللي بتخلي أي حاجة حواليكي أهدى وأحلى.<br><br>
-
-    وعارفة يا جنجون، أكتر حاجة بحبها فيكي إنك طبيعية جدًا، مفيكيش أي تصنع، وكل حاجة فيكي حقيقية وده اللي مخليكي مميزة بجد في عيني.<br><br>
-
-    ولما بفضل أهزر وأناكف فيكي 😂 فده عشان بحب أشوف رياكشناتك وبحب أطلع الطفلة اللي جواكي.<br><br>
-
-    وجودك في حياتي فرق كبير، حسسني إني أخدت نصيبي الحلو من الدنيا فيكي.<br><br>
-
-    بدعي ربنا دايمًا إن السنة الجاية تكون أحلى ❤️<br><br>
-
-    كل سنة وإنتي منورة حياتي ✨<br><br>
-
-    عقبال عمر بحاله نعيشه سوا ❤️
-
-    </p>
-
-    </div>
-    """, unsafe_allow_html=True)
+    
+    # حط هنا صورك (تأكد إن الصور مرفوعة على GitHub في نفس الفولدر)
+    # st.image("pic1.jpg", use_column_width=True) 
+    
+    st.markdown('<div class="text-style">', unsafe_allow_html=True)
+    
+    st.write("النهاردة إنتي كبرتي سنة، بس كل سنة بتمر بتزودك جمال في عيني وقرب في قلبي أكتر من اللي قبلها.")
+    st.write("كل سنة وإنتي طيبة ❤️")
+    st.write("وجودك مش بس حلى أيامي، ده خلاني أعرف يعني إيه أحب بجد وأحس إن قلبي مبسوط ومكتفي بيكي.")
+    st.write("معاكي ببقى على طبيعتي من غير أي حسابات.. وعقبال عمر بحاله نعيشه سوا وإيدي في إيدك ✨")
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # st.image("pic2.jpg", use_column_width=True)
